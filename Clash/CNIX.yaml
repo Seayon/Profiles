@@ -300,7 +300,7 @@ proxy-groups:
 # 关于 Rule Provider 请查阅：https://lancellc.gitbook.io/clash/clash-config-file/rule-provider
 rule-providers:
 
-# name: # Provider 名称
+# name: # Provider 名称2
 #   type: http # http 或 file
 #   behavior: classical # 或 ipcidr、domain
 #   path: # 文件路径
