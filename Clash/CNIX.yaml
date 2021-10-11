@@ -231,7 +231,7 @@ proxy-providers:
     path: ./Proxy/List.yaml # 注意此处文件名不可相同
     health-check:
       enable: true
-      interval: 600
+      interval: 120
       url: http://www.gstatic.com/generate_204
 
 proxy-groups:
