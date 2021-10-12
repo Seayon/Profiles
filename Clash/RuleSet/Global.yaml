@@ -587,3 +587,4 @@ payload:
   - DOMAIN-SUFFIX,zaobao.com.sg
   - DOMAIN,international-gfe.download.nvidia.com
   - DOMAIN,store-images.s-microsoft.com
+  - DOMAIN-SUFFIX,jenkins.io

@@ -85,7 +85,8 @@ dns:
   # Specify IP addresses only
   default-nameserver:
     - 119.29.29.29
-  enhanced-mode: redir-host # or fake-ip
+  #enhanced-mode: redir-host # or fake-ip
+  enhanced-mode: fake-ip # or fake-ip
   fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
   # use-hosts: true # lookup hosts and return IP record
 
@@ -260,6 +261,7 @@ proxy-groups:
     proxies:
       - ✈️ 节点订阅 # 嵌套使用订阅节点策略组
       - DIRECT
+      - 负载均衡节点
 
 
 # 白名单模式 PROXY, 黑名单模式 DIRECT, 不知道别动
@@ -282,19 +284,53 @@ proxy-groups:
 
 # 中国流媒体服务（面向海外版本）
 # 用于观看部分国内流媒体面向港澳台的地区的限定内容，此处应放港澳台节点，如果没有此需求可删除此处策略组及相关规则
-  - name: "StreamingSE"
-    type: select
-    use:
-      - Servers
-    proxies:
-      - DIRECT
-      - PROXY
+#  - name: "StreamingSE"
+#    type: select
+#    use:
+#      - Servers
+#    proxies:
+#      - DIRECT
+#      - PROXY
 
   - name: "✈️ 节点订阅"
-    type: url-test
+    type: select
+    tolerance: 300
     use:
       - Servers
     url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+
+  - name: "load_1"
+    type: select
+    use:
+      - Servers
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+
+  - name: "load_2"
+    type: select
+    use:
+      - Servers
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+
+  - name: "load_3"
+    type: select
+    use:
+      - Servers
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+
+
+  - name: "负载均衡节点"
+    type: load-balance
+    strategy: round-robin
+    url: 'http://www.gstatic.com/generate_204'
+    proxies:
+      - load_1
+      - load_2
+      - load_3
+
     interval: 300
 
 # 关于 Rule Provider 请查阅：https://lancellc.gitbook.io/clash/clash-config-file/rule-provider
@@ -321,12 +357,12 @@ rule-providers:
 #    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/Streaming.yaml
     interval: 86400
 
-  StreamingSE:
-    type: http
-    behavior: classical
-    path: ./RuleSet/StreamingMedia/StreamingSE.yaml
-#    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/StreamingSE.yaml
-    interval: 86400
+#  StreamingSE:
+#    type: http
+#    behavior: classical
+#    path: ./RuleSet/StreamingMedia/StreamingSE.yaml
+##    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/StreamingSE.yaml
+#    interval: 86400
 
   Global:
     type: http
@@ -360,7 +396,7 @@ rules:
   - RULE-SET,Streaming,Streaming
 
   # (StreamingSE)
-  - RULE-SET,StreamingSE,StreamingSE
+  #- RULE-SET,StreamingSE,StreamingSE
 
   # (DNS Cache Pollution) / (IP Blackhole) / (Region-Restricted Access Denied) / (Network Jitter)
   - RULE-SET,Global,PROXY
