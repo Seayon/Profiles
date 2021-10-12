@@ -333,12 +333,14 @@ proxy-groups:
 
   - name: "负载均衡节点"
     type: load-balance
+    use:
+      - Servers
     strategy: round-robin
     url: 'http://www.gstatic.com/generate_204'
-    proxies:
-      - load_1
-      - load_2
-      - load_3
+#    proxies:
+#      - load_1
+#      - load_2
+#      - load_3
     interval: 300
 
 # 关于 Rule Provider 请查阅：https://lancellc.gitbook.io/clash/clash-config-file/rule-provider
