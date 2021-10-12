@@ -30,18 +30,26 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
 
     // 导入 Global 全球常用域名的规则
     let ruleProviders = {}
-    content['rule-providers'] = ruleProviders['Global'] = {
-        'type': "http",
-        'behavior': "classical",
-        'path': "./Global.yaml",
-        'url': 'https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Global.yaml',
-        'interval': "86400",
+    ruleProviders['Global'] = {
+            'type': "http",
+            'behavior': "classical",
+            'path': "./Global.yaml",
+            'url': 'https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Global.yaml',
+            'interval': "86400"
     }
-    // 将上述的 Global 设置为使用代理
+    content['rule-providers'] = ruleProviders
+        // 将上述的 Global 设置为使用代理
     content['rules'].unshift("RULE-SET,Global,🔰国外流量");
 
     // // 导入 Unbreak 列表
     // content['rules'].unshift("RULE-SET,Global,🔰国外流量");
+
+    // - DOMAIN-SUFFIX,duyaoss.com,🔰国外流量
+    // - DOMAIN-SUFFIX,stackoverflow.com,🔰国外流量
+    // - DOMAIN-SUFFIX,jenkins-ci.org,🔰国外流量
+    // - DOMAIN-SUFFIX,debian.org,🔰国外流量
+    // - DOMAIN-SUFFIX,docker.io,🔰国外流量
+    // - DOMAIN-SUFFIX,v2ex.com,🔰国外流量
 
 
     // 导入医保内网要放开的网段
