@@ -20,13 +20,14 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
             content['proxy-groups'][0].proxies.unshift(proxiesGroupName);
         }
     }
+
     console.log('yaml---')
     console.log(yaml)
 
     notify("MiXin 解析：", url, false);
     const content = yaml.parse(raw)
-    extracted('🇭🇰香港负载均衡','香港');
-    extracted('🇭🇰沪港负载','沪港');
+    extracted('🇭🇰香港负载均衡', '香港');
+    extracted('🇭🇰沪港负载', '沪港');
 
     // 导入神机规则
 
@@ -42,16 +43,19 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     content['rule-providers'] = ruleProviders
     // 将上述的 Global 设置为使用代理
     content['rules'].unshift("RULE-SET,Global,🔰国外流量");
+    content['rules'].unshift("RULE-SET,Global,🔰国外流量");
 
     // // 导入 Unbreak 列表
     // content['rules'].unshift("RULE-SET,Global,🔰国外流量");
 
-    // - DOMAIN-SUFFIX,duyaoss.com,🔰国外流量
-    // - DOMAIN-SUFFIX,stackoverflow.com,🔰国外流量
-    // - DOMAIN-SUFFIX,jenkins-ci.org,🔰国外流量
-    // - DOMAIN-SUFFIX,debian.org,🔰国外流量
-    // - DOMAIN-SUFFIX,docker.io,🔰国外流量
-    // - DOMAIN-SUFFIX,v2ex.com,🔰国外流量
+    // 导入自定义的域名列表
+    content['rules'].unshift("DOMAIN-SUFFIX,duyaoss.com,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,stackoverflow.com,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,jenkins-ci.org,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,jenkins.io,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,debian.org,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,docker.io,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,v2ex.com,🔰国外流量");
 
 
     // 导入医保内网要放开的网段
