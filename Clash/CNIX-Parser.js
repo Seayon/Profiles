@@ -56,6 +56,8 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     content['rules'].unshift("DOMAIN-SUFFIX,debian.org,🔰国外流量");
     content['rules'].unshift("DOMAIN-SUFFIX,docker.io,🔰国外流量");
     content['rules'].unshift("DOMAIN-SUFFIX,v2ex.com,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,ftp-chi.osuosl.org,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,production.cloudflare.docker.com,🔰国外流量");
     content['rules'].unshift("DOMAIN-SUFFIX,spring.io,🔰国外流量");
 
 
