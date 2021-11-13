@@ -26,8 +26,10 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
 
     notify("MiXin 解析：", url, false);
     const content = yaml.parse(raw)
-    extracted('🇭🇰香港负载均衡', '香港');
-    extracted('🇭🇰沪港负载', '沪港');
+    extracted('🇭🇰印度 班加罗尔 IPLC 负载', '印度 班加罗尔');
+    extracted('🇭🇰沪港 IEPL负载', '沪港 IEPL');
+    extracted('🇭🇰香港 IPLC负载', '香港 IPLC');
+    extracted('🇭🇰香港 IEPL负载', '香港 IEPL');
 
     // 导入神机规则
 
