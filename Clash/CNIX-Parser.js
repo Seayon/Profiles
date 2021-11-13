@@ -34,9 +34,9 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     // 导入 Global 全球常用域名的规则
     let ruleProviders = {}
     ruleProviders['Global'] = {
-        'type': "http",
+        'type': "file",
         'behavior': "classical",
-        'path': "./Global.yaml",
+        'path': "D:\\IDEAProject\\Profiles\\Clash\\RuleSet\\Global.yaml",
         'url': 'https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Global.yaml',
         'interval': "86400"
     }
