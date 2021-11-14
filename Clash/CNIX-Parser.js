@@ -38,13 +38,12 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     ruleProviders['Global'] = {
         'type': "file",
         'behavior': "classical",
-        'path': "D:\\IDEAProject\\Profiles\\Clash\\RuleSet\\Global.yaml",
+        'path': "/Users/seayon/IdeaProjects/Profiles/Clash/RuleSet/Global.yaml",
         'url': 'https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Global.yaml',
         'interval': "86400"
     }
     content['rule-providers'] = ruleProviders
     // 将上述的 Global 设置为使用代理
-    content['rules'].unshift("RULE-SET,Global,🔰国外流量");
     content['rules'].unshift("RULE-SET,Global,🔰国外流量");
 
     // // 导入 Unbreak 列表
