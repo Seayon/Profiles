@@ -29,19 +29,24 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     // 添加网易云音乐代理
 
     content.proxies.push({
-        'name': '网易云音乐解锁代理',
+        'name': 'Netease',
         'type': 'http',
-        'server': '127.0.0.1',
-        'port': '9990',
-        'skip-cert-verify': true,
-        'tls': true,
+        'server': '168.10.88.136',
+        'port': 9991
+        // 'skip-cert-verify': true,
+        // 'tls': true,
         // 'udp': true
     });
+
+    // 网易云音乐解锁代理
+    // content['rules'].unshift("DOMAIN-SUFFIX,163.com,Netease");
+    // content['rules'].unshift("PROCESS-NAME,NeteaseMusic,Netease");
 
     extracted('🇭🇰印度 班加罗尔 IPLC 负载', '印度 班加罗尔');
     extracted('🇭🇰沪港 IEPL负载', '沪港 IEPL');
     extracted('🇭🇰香港 IPLC负载', '香港 IPLC');
     extracted('🇭🇰香港 IEPL负载', '香港 IEPL');
+    // extracted('Netease', 'Netease');
 
 
     // 导入神机规则
@@ -58,6 +63,8 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     content['rule-providers'] = ruleProviders
     // 将上述的 Global 设置为使用代理
     content['rules'].unshift("RULE-SET,Global,🔰国外流量");
+
+
 
     // // 导入 Unbreak 列表
     // content['rules'].unshift("RULE-SET,Global,🔰国外流量");
@@ -82,9 +89,7 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     content['rules'].unshift("IP-CIDR,168.10.0.0/16,DIRECT");
     content['rules'].unshift("IP-CIDR,168.20.0.0/16,DIRECT");
     content['rules'].unshift("IP-CIDR,168.100.0.0/16,DIRECT");
-    // 网易云音乐解锁代理
-    content['rules'].unshift("DOMAIN-SUFFIX,music.163.com,网易云音乐解锁代理");
-    content['rules'].unshift("DOMAIN-SUFFIX,interface.music.163.com,网易云音乐解锁代理");
+
 
     return yaml.stringify(content)
 }
