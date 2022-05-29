@@ -42,10 +42,15 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     // content['rules'].unshift("DOMAIN-SUFFIX,163.com,Netease");
     // content['rules'].unshift("PROCESS-NAME,NeteaseMusic,Netease");
 
+    extracted('🇭🇰油尖旺御金·国峯 環球全域電訊', '油尖旺御金·国峯 環球全域電訊');
+    extracted('🇭🇰油尖旺御金·国峯 名氣通電訊', '油尖旺御金·国峯 名氣通電訊');
     extracted('🇭🇰印度 班加罗尔 IPLC 负载', '印度 班加罗尔');
     extracted('🇭🇰沪港 IEPL负载', '沪港 IEPL');
     extracted('🇭🇰香港 IPLC负载', '香港 IPLC');
     extracted('🇭🇰香港 IEPL负载', '香港 IEPL');
+    extracted('🇭🇰沪日 IEPL负载', '沪日IEPL');
+    extracted('🇸🇬新加坡高级 IEPL', '新加坡高级');
+    extracted('🇸🇬新加坡高级 IEPL', '台湾IEPL');
     // extracted('Netease', 'Netease');
 
 
@@ -81,14 +86,21 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     content['rules'].unshift("DOMAIN-SUFFIX,production.cloudflare.docker.com,🔰国外流量");
     content['rules'].unshift("DOMAIN-SUFFIX,spring.io,🔰国外流量");
     content['rules'].unshift("DOMAIN-SUFFIX,mysql.com,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,deepl.com,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,postman.com,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,getpostman.com,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,postmanlabs.com,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,*.doubleclick.net,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,cdn.mouseflow.com,🔰国外流量");
 
+    content['rules'].unshift("DOMAIN-SUFFIX,cloudfront.net,DIRECT");
 
     // 导入医保内网要放开的网段
-    content['rules'].unshift("IP-CIDR,172.15.0.0/16,DIRECT");
-    content['rules'].unshift("IP-CIDR,168.151.0.0/16,DIRECT");
-    content['rules'].unshift("IP-CIDR,168.10.0.0/16,DIRECT");
-    content['rules'].unshift("IP-CIDR,168.20.0.0/16,DIRECT");
-    content['rules'].unshift("IP-CIDR,168.100.0.0/16,DIRECT");
+    // content['rules'].unshift("IP-CIDR,172.15.0.0/16,DIRECT");
+    // content['rules'].unshift("IP-CIDR,168.151.0.0/16,DIRECT");
+    // content['rules'].unshift("IP-CIDR,168.10.0.0/16,DIRECT");
+    // content['rules'].unshift("IP-CIDR,168.20.0.0/16,DIRECT");
+    // content['rules'].unshift("IP-CIDR,168.100.0.0/16,DIRECT");
 
 
     return yaml.stringify(content)
