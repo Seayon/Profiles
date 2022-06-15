@@ -1,10 +1,10 @@
 module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, interval, selected}) => {
 
-    function extracted(proxiesGroupName, searchElement) {
+    function extracted(proxiesGroupName, searchRegex) {
         let proxies = [];
         for (let proxy of content.proxies) {
             if (proxy.server === undefined) continue;
-            if (proxy.name.indexOf(searchElement) !== -1) {
+            if (proxy.name.match(searchRegex) !== null) {
                 proxies.push(proxy.name);
             }
         }
@@ -42,16 +42,7 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     // content['rules'].unshift("DOMAIN-SUFFIX,163.com,Netease");
     // content['rules'].unshift("PROCESS-NAME,NeteaseMusic,Netease");
 
-    extracted('🇭🇰油尖旺御金·国峯 環球全域電訊', '油尖旺御金·国峯 環球全域電訊');
-    extracted('🇭🇰油尖旺御金·国峯 名氣通電訊', '油尖旺御金·国峯 名氣通電訊');
-    extracted('🇭🇰印度 班加罗尔 IPLC 负载', '印度 班加罗尔');
-    extracted('🇭🇰沪港 IEPL负载', '沪港 IEPL');
-    extracted('🇭🇰香港 IPLC负载', '香港 IPLC');
-    extracted('🇭🇰香港 IEPL负载', '香港 IEPL');
-    extracted('🇭🇰沪日 IEPL负载', '沪日IEPL');
-    extracted('🇸🇬新加坡高级 IEPL', '新加坡高级');
-    extracted('🇸🇬新加坡高级 IEPL', '台湾IEPL');
-    extracted('🇯🇵中国-日本 多协议标签交换虚拟专用网', '中国-日本 多协议标签交换虚拟专用网');
+    extracted('香港|MPTCP', '香港\\d{2}\\|MPTCP');
     // extracted('Netease', 'Netease');
 
 
@@ -68,31 +59,31 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     }
     content['rule-providers'] = ruleProviders
     // 将上述的 Global 设置为使用代理
-    content['rules'].unshift("RULE-SET,Global,🔰国外流量");
+    content['rules'].unshift("RULE-SET,Global,🐸速蛙云");
 
 
 
     // // 导入 Unbreak 列表
-    // content['rules'].unshift("RULE-SET,Global,🔰国外流量");
+    // content['rules'].unshift("RULE-SET,Global,🐸速蛙云");
 
     // 导入自定义的域名列表
-    content['rules'].unshift("DOMAIN-SUFFIX,duyaoss.com,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,stackoverflow.com,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,jenkins-ci.org,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,jenkins.io,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,debian.org,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,docker.io,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,v2ex.com,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,ftp-chi.osuosl.org,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,production.cloudflare.docker.com,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,spring.io,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,mysql.com,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,deepl.com,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,postman.com,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,getpostman.com,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,postmanlabs.com,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,*.doubleclick.net,🔰国外流量");
-    content['rules'].unshift("DOMAIN-SUFFIX,cdn.mouseflow.com,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,duyaoss.com,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,stackoverflow.com,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,jenkins-ci.org,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,jenkins.io,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,debian.org,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,docker.io,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,v2ex.com,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,ftp-chi.osuosl.org,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,production.cloudflare.docker.com,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,spring.io,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,mysql.com,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,deepl.com,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,postman.com,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,getpostman.com,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,postmanlabs.com,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,*.doubleclick.net,🐸速蛙云");
+    content['rules'].unshift("DOMAIN-SUFFIX,cdn.mouseflow.com,🐸速蛙云");
 
     content['rules'].unshift("DOMAIN-SUFFIX,cloudfront.net,DIRECT");
 
