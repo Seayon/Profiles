@@ -93,6 +93,7 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     content['rules'].unshift("DOMAIN-SUFFIX,postmanlabs.com,🔰国外流量");
     content['rules'].unshift("DOMAIN-SUFFIX,*.doubleclick.net,🔰国外流量");
     content['rules'].unshift("DOMAIN-SUFFIX,cdn.mouseflow.com,🔰国外流量");
+    content['rules'].unshift("DOMAIN-SUFFIX,translate.googleapis.com,🔰国外流量");
 
     content['rules'].unshift("DOMAIN-SUFFIX,cloudfront.net,DIRECT");
 
